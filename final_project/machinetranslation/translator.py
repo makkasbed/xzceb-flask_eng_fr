@@ -26,15 +26,19 @@ def english_to_french(english_text):
     """
     This function translates english text to french text
     """
-    translation = language_translator.translate(text=english_text, model_id='en-fr').get_result()
-    print(json.dumps(translation, indent=2, ensure_ascii=False))
-    return translation
+    if english_text == None:
+        return None
+    else:
+        translation = language_translator.translate(text=english_text, model_id='en-fr').get_result()
+        return translation["translations"][0]['translation']
 
 
 def french_to_english(french_text):
     """
     This function translate french text to english text
     """
-    translation = language_translator.translate(text=french_text,model_id='fr-en').get_result()
-    print(json.dumps(translation, indent=2, ensure_ascii=False))
-    return translation
+    if french_text == None:
+        return None
+    else:
+        translation = language_translator.translate(text=french_text,model_id='fr-en').get_result()
+        return translation["translations"][0]['translation']
